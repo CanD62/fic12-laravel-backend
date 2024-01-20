@@ -64,7 +64,9 @@ class ProductController extends Controller
             $request->image->storeAs('public/products', $filename);
             $product->image = $filename;
         }
-        $product->update($request->all());
+        // $product->update($request->all());
+		// $product->fill($request->except('image'));
+		$product->save();
 
         return redirect()->route('product.index')->with('success', 'Product updated successfully');
     }
